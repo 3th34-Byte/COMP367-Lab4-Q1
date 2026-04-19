@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StringExtensionsLibNet8\StringExtensionsLibNet8.csproj">
+      <Project>{9c9425a6-cb78-4a9e-bb05-b96d7ee4f0a9}</Project>
+      <Name>StringExtensionsLibNet8</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StringExtensionsLib\StringExtensionsLib.csproj">
       <Project>{7f78ea4b-b5c6-4392-b558-19a3ca587a74}</Project>
       <Name>StringExtensionsLib</Name>

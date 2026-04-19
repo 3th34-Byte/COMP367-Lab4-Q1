@@ -21,7 +21,7 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'Build'
 
-- script: dotnet pack StringExtensionsLib/StringExtensionsLib.csproj --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+- script: dotnet pack StringExtensionsLibNet8/StringExtensionsLibNet8.csproj --configuration Release --output $(Build.ArtifactStagingDirectory)
   displayName: 'Pack'
 
 - task: NuGetAuthenticate@1

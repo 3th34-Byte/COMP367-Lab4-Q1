@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<PackageId>StringExtensionsLib.COMP367</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Jerome Quayson</Authors>
+		<Company>Jerome Quayson</Company>
+		<Description>COMP367 Lab 4 string extension library</Description>
+	</PropertyGroup>
+
+</Project>
