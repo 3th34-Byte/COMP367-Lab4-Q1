@@ -15,22 +15,24 @@ steps:
   inputs:
     version: '8.x'
 
+- task: NuGetToolInstaller@1
+  displayName: 'Install NuGet'
+
 - script: dotnet restore
   displayName: 'Restore'
 
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'Build'
+- script: dotnet build StringExtensionsLibNet8/StringExtensionsLibNet8.csproj --configuration $(buildConfiguration)
+  displayName: 'Build library'
 
-- script: dotnet pack StringExtensionsLibNet8/StringExtensionsLibNet8.csproj --configuration Release --output $(Build.ArtifactStagingDirectory)
+- script: dotnet pack StringExtensionsLibNet8/StringExtensionsLibNet8.csproj --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
   displayName: 'Pack'
 
 - task: NuGetAuthenticate@1
   displayName: 'Authenticate to feed'
 
-- task: NuGetCommand@2
+- script: |
+    nuget.exe push "$(Build.ArtifactStagingDirectory)\*.nupkg" ^
+      -Source "https://pkgs.dev.azure.com/comp367-jeromequayson/COMP367-Lab4-Q1/_packaging/comp367-feed/nuget/v3/index.json" ^
+      -ApiKey az ^
+      -NonInteractive
   displayName: 'Push package to Azure Artifacts'
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg;!$(Build.ArtifactStagingDirectory)/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: 'COMP367-Lab4-Q1/comp367-feed'
