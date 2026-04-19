@@ -33,4 +33,4 @@ steps:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg;!$(Build.ArtifactStagingDirectory)/*.symbols.nupkg'
     nuGetFeedType: 'internal'
-    publishVstsFeed: 'comp367-feed'
+    publishVstsFeed: 'COMP367-Lab4-Q1/comp367-feed'
